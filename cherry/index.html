@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>樱为邮你</title>
+
+    <!--加载jquery ui主要作用是使用其拖拽的功能-->
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <!--想要图片合成，核心就是加载使用这个插件-->
+    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+
+    <!-- 图片缩放 -->
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <!-- jQuery UI draggable 适配移动端 -->
+    <script src="http://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.js"></script>
+    <script src="http://cdn.bootcss.com/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <script src="./js/base64.js"></script>
+    <script src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+    <p id="headTitle">我和樱花有个约定</p>
+
+    <div class="whole">
+
+        <img id="baseimg">
+
+        <div id="drgBox">
+            <div class="drg">
+                <img id="styleimg">
+            </div>
+        </div>
+
+    </div>
+
+    <div id="btns">
+        <div id="upload" onchange="BaseImage()">
+            <input type="file" onchange="StyleImage(this)" accept='image/*' id="upImg">
+        </div>
+
+        <div id="download" onclick="down()"></div>
+    </div>
+
+</body>
+
+</html>

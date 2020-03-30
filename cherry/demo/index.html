@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scals=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我和樱花有个约定</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input type="file" id="file">
+        <button id="btn" @click="clickBtn">上传图片</button>
+        <div style="width: 100%;height: 1px; background-color: #333333"></div>
+        <div>
+            <ul>
+                <li style="list-style: none; background-color: #d2d2d2" v-for="item in images">
+                    <img :src="item" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            images: []
+        },
+        methods: {
+            clickBtn: function () {
+                var file = $("#file").get(0).files[0];
+                var formData = new FormData();
+                formData.append("file", file);
+                var that = this;
+                axios.post("http://192.168.0.213:8088/upload/picture", formData)
+                    .then(function (response) {
+                        var data = response["data"];
+                        var code = data["code"];
+                        var message = data["message"];
+                        var url = data["list"];
+                        if (code == "000000") {
+                            that.images.push(url);
+                        } else {
+                            alert("上传失败");
+                        }
+                    })
+                    .catch(function (error) {
+                        alert("上传失败" + error);
+                    })
+            }
+        }
+    })
+
+</script>
+
+</html>
